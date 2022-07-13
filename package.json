@@ -1,0 +1,22 @@
+{
+  "name": "notifybot",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "git@github.com:Paul-Marie/NotifyBot.git",
+  "author": "Paul\\0 <paul-marie.bettinelli@epitech.eu>",
+  "license": "Unlicense",
+  "scripts": {
+    "start": "node ./src",
+    "dev": "nodemon ./src/index.js"
+  },
+  "dependencies": {
+    "@discordjs/rest": "^0.3.0",
+    "cron": "^2.0.0",
+    "discord-api-types": "^0.26.1",
+    "discord-slash-commands-client": "^1.2.2",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.1",
+    "moment-timezone": "^0.5.34",
+    "mongoose": "^6.3.5"
+  }
+}
