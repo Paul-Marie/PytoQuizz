@@ -1,7 +1,6 @@
 const express  = require("express");
 const Question = require("../models/question");
 
-
 const app = express();
 
 app.get("/questions", async ({ body }, res) => (
