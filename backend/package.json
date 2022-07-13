@@ -10,12 +10,8 @@
     "dev": "nodemon ./src/index.js"
   },
   "dependencies": {
-    "@discordjs/rest": "^0.3.0",
-    "cron": "^2.0.0",
-    "discord-api-types": "^0.26.1",
-    "discord-slash-commands-client": "^1.2.2",
-    "discord.js": "^13.6.0",
     "dotenv": "^16.0.1",
+    "express": "^4.18.1",
     "moment-timezone": "^0.5.34",
     "mongoose": "^6.3.5"
   }
