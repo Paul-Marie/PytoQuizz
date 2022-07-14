@@ -26,11 +26,18 @@ function App() {
             <p>
               Choisissez votre <code>Thème</code>.
             </p>
-            <button onClick={() => setTheme(null)}>
+            <button
+              className="button"
+              onClick={() => setTheme(null)}
+            >
               Tous
             </button>
             {themesList?.map((topic, i) => (
-              <button key={i} onClick={() => setTheme(topic)}>
+              <button
+                className="button"
+                key={i}
+                onClick={() => setTheme(topic)}
+              >
                 {topic}
               </button>
             ))}

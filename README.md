@@ -1,51 +1,41 @@
-<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="Bwuno" src="https://pbs.twimg.com/profile_images/1508950960592211973/_eooqgBH_400x400.jpg"/>
+<img width="150" height="150" align="left" style="float: left; margin: 0 10px 0 0;" alt="PytoQuiz" src="https://data.topquizz.com/distant/quizz/big/8/1/0/5/125018_09e4887414.jpg"/>
 
-# NotifyBot
+# PytoQuiz
 
-[![](https://img.shields.io/badge/Add-NotifyBot-0199FE.svg?style=flat)](https://discord.com/api/oauth2/authorize?client_id=981840577794543666&permissions=277025655872&scope=bot%20applications.commands)
-[![](https://img.shields.io/badge/discord.js-v13.6.0-blue.svg?logo=npm)](https://github.com/discordjs)
+<p align="center">
+  <a href="https://discord.com/api/oauth2/authorize?client_id=642935463048642570&permissions=347200&scope=applications.commands%20bot" alt="Build Status">
+    <img src="https://img.shields.io/badge/Add-Bwuno-800080.svg?style=flat" />
+  </a>
+    <a href="https://github.com/discordjs">
+    <img alt="discord.js" src="https://img.shields.io/badge/nodejs-v18.3-red.svg?logo=npm" >
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img alt="typescript" src="https://img.shields.io/badge/typescript-v4.7.3-blue.svg?logo=typescript" >
+  </a>
+  <a href="https://github.com/Paul-Marie/Bwuno/commits/master">
+    <img src="https://img.shields.io/github/last-commit/Paul-Marie/Bwuno?style=flat-square&logo=github&logoColor=white" alt="GitHub last commit">
+  </a>
+  <a href="https://github.com/Paul-Marie/Bwuno/commits/master" alt="Code Size">
+    <img src="https://shields.io/github/languages/code-size/Paul-Marie/Bwuno" />
+  </a>
+</p>
 
-> Simple Ni No Kuni Discord bot notifying boss' arrival.
+[![](https://img.shields.io/badge/discord.js-v13.8-green.svg?logo=node.js)](https://nodejs.org/dist/v18.6.0/node-v18.6.0-x64.msi)
+[![](https://img.shields.io/badge/typescript-v1.22.17-blue.svg?logo=yarn)](https://github.com/yarnpkg/yarn/releases/download/v1.22.19/yarn-1.22.19.msi)
+[![](https://img.shields.io/badge/mongoDB-v3.6.8-blackgreen.svg?logo=mongodb)](https://fastdl.mongodb.org/windows/mongodb-windows-x86_64-5.0.9-signed.msi)
 
-NotifyBot is a simple Discord bot which will remind your users of the upcoming arrival of **Field Boss**, **World Boss** and **Arena** (Lava Valley) of the game [Ni No Kuni](https://play.google.com/store/apps/details?id=com.netmarble.enngb&hl=fr&gl=US).
-
-
-## Commands
-
-This bot use Discord' slash commands, in order to use it you need to invite it on your Discord server with permissions to create **application commands**.
-
-🔸 `/help` -> Display the help menu
-
-🔸 `/add <channel> <type={FieldBoss,WorldBoss,ChaosBoss,Arena} [mode={before,now}] [message]` -> Add a reminder on a TextChannel (multiple on the same channel supported)
-
-🔸 `/remove <channel>` -> Delete all reminder on a TextChannel
-
-🔸 `/show` -> Display all reminders on this Discord server
-
-The `message` posted musn't exceed 2500 char, and can mentions roles or peoples by mentionning the role or user directly using `<@id>` where `id` is user or role's Discord id.
-> Same goes for emojis.
-
-In order to make more reliable notifications, you can choose whether the bot publishes 10 min before the boss arrives or on time
-
-|                                 | Notification schedule (mode: before) | Notification schedule (mode: now) |
-|---------------------------------|--------------------------------------|-----------------------------------|
-| World Boss (Everyday)           | `3:20`, `9:20`, `15:20`              | `3:30`, `9:30`, `15:30`, `21:30`  |
-| Field Boss (Everyday)           | `3:50`, `9:50`, `15:50`, `21:50`     | `4:00`, `10:00`, `16:00`, `22:00` |
-| Chaos Boss (Everyday)           | `4:20`, `10:20`, `16:20`, `22:20`     | `4:30`, `10:30`, `16:30`, `22:30` |
-| Arena (Each Tuesday and Sunday) | `19:50`                              | `20:00`                           |
+> Simple site de quiz pour pyto.
 
 ## Installation
 
-⚠️ This part is reserved to developers wanting to make their own bot only, if you don't master Discord applications creation, just install the already made one by [clicking here](https://discord.com/api/oauth2/authorize?client_id=981840577794543666&permissions=277025655872&scope=bot%20applications.commands)
-
 ```sh
-git clone https://github.com/Paul-Marie/NotifyBot;
-cd NotifyBot/
+git clone https://github.com/Paul-Marie/PytoQuizz;
+cd PytoQuizz/
 ```
 Open `.env.dist` file and fill up `DISCORD_TOKEN` and `MONGODB_URI` (optionnal) in a new file nammed `.env`
 > basic `MONGODB_URI` value can be `mongodb://localhost/notifybot`
 
-Make sure to use [Node.JS](https://nodejs.org/fr/download/) v17 or higher, then start your bot using [yarn](https://classic.yarnpkg.com/fr/docs/install/#debian-stable) or [npm](https://nodejs.org/fr/download/) (here with yarn)
+Make sure to use [Node.JS](https://nodejs.org/fr/download/) v18 or higher, then start your bot using [yarn](https://classic.yarnpkg.com/fr/docs/install/#debian-stable) or [npm](https://nodejs.org/fr/download/) (here with yarn)
 ```sh
 yarn;				# Install all dependencies
 yarn start 			# Start the bot

@@ -3,11 +3,11 @@ import './style.css';
 
 const Quiz = ({ theme }) => {
   const [questionsList, setQuestionsList] = useState();
-  const [question, setQuestion] = useState();
-  const [error,     setError    ] = useState();
-  const [field,     setField    ] = useState('');
-  const [score,     setScore    ] = useState(0);
-  const [index,     setIndex    ] = useState(0);
+  const [question,      setQuestion     ] = useState();
+  const [error,         setError        ] = useState();
+  const [field,         setField        ] = useState('');
+  const [score,         setScore        ] = useState(0);
+  const [index,         setIndex        ] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -20,7 +20,6 @@ const Quiz = ({ theme }) => {
 
   const handleChange = ({ target }) => setField(target?.value);
   const handleNext   = () => {
-    console.log("toto")
     setError();
     setField("");
     setQuestion(questionsList[index + 1]);
@@ -49,16 +48,35 @@ const Quiz = ({ theme }) => {
             <p>
               {question?.text}
             </p>
-            <img src={question?.image} className="App-logo" alt="logo" />
-            <input type="text" value={field} onChange={handleChange} />
-            <br/>
-            <button onClick={handleSubmit}>
-              Valider
-            </button>
+            <img
+              className="App-logo"
+              src={question?.image}
+              alt="logo"
+            />
+            {!error && (
+              <>
+                <input
+                  className="input"
+                  type="text"
+                  value={field}
+                  onChange={handleChange}
+                />
+                <br/>
+                <button
+                  className="button"
+                  onClick={handleSubmit}
+                >
+                  Valider
+                </button>
+              </>
+            )}
             {error && (
               <>
                 Perdu la bonne réponse était: <code>{question?.answer}</code>
-                <button onClick={handleNext}>
+                <button
+                  className="button"
+                  onClick={handleNext}
+                >
                   Suivant
                 </button>
               </>
@@ -66,8 +84,13 @@ const Quiz = ({ theme }) => {
           </>
         ) : (
           <>
-            <p>Voila ! tu as fini le Quiz avec <code>{score}/{questionsList?.length}</code> points !</p>
-            <button onClick={() => window.location.reload(false)}>
+            <p>
+              Voila ! tu as fini le Quiz avec <code>{score}/{questionsList?.length ?? 0}</code> points !
+            </p>
+            <button
+              className="button"
+              onClick={() => window.location.reload(false)}
+            >
               Recommencer
             </button>
           </>
