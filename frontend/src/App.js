@@ -1,30 +1,42 @@
 import { useEffect, useState } from 'react';
+import Quiz from './Quiz';
 import './style.css';
 
 function App() {
-  const [questions, setQuestions] = useState();
-  const [score,     setScore    ] = useState(0);
+  const [themesList, setThemesList] = useState();
+  const [theme,      setTheme     ] = useState();
+  const [score,      setScore     ] = useState(0);
 
   useEffect(() => {
-    const result = fetch(`localhost:${3000}/questions`);
-    setQuestions(result);
+    (async () => {
+      const result = await fetch(`http://localhost:${4242}/themes`, {
+        method: "GET",
+        headers: { 'Content-Type': 'application/json' }
+      });
+      setThemesList(await result.json());
+    })();
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        {/*<img src={logo} className="App-logo" alt="logo" />*/}
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {theme !== undefined ? (
+          <Quiz theme={theme} />
+        ) : (
+          <>
+            <p>
+              Choisissez votre <code>Thème</code>.
+            </p>
+            <button onClick={() => setTheme(null)}>
+              Tous
+            </button>
+            {themesList?.map((topic, i) => (
+              <button key={i} onClick={() => setTheme(topic)}>
+                {topic}
+              </button>
+            ))}
+          </>
+        )}
       </header>
     </div>
   );

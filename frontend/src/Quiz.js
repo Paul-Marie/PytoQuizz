@@ -1,43 +1,60 @@
 import { useEffect, useState, memo } from 'react';
 import './style.css';
 
-const Quiz = () => {
+const Quiz = ({ theme }) => {
   const [questions, setQuestions] = useState();
+  const [error,     setError    ] = useState();
   const [field,     setField    ] = useState('');
   const [score,     setScore    ] = useState(0);
+  const [index,     setIndex    ] = useState(0);
 
   useEffect(() => {
-    const result = fetch(`localhost:${4242}/questions`);
-    setQuestions(result);
-  }, []);
+    (async () => {
+      const result = await fetch(`http://localhost:${4242}/questions${theme ? `?theme=${theme}` : ''}`);
+      setQuestions(await result.json());
+    })();
+  }, [theme]);
 
   const handleChange = ({ target }) => setField(target?.value);
+  const handleNext   = () => {
+    setError();
+    setField("");
+    setIndex(index + 1);
+  }
 
   const handleSubmit = async () => {
-    const result = await fetch(`localhost:${4242}`, {
+    const result = await fetch(`http://localhost:${4242}/questions/${questions?.[index]?._id}`, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ answer: field })
     });
-    console.log(result);
-    setField("");
+    if (result.status === 204) {
+      setScore(score + 1);
+    } else if (result.status === 400) {
+
+    }
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        {questions.map(({ text, image }) => (
+        <p>
+          {questions?.[index]?.text}
+        </p>
+        <img src={questions?.[index]?.image} className="App-logo" alt="logo" />
+        <input type="text" value={field} onChange={handleChange} />
+        <br/>
+        <button onClick={handleSubmit}>
+          Valider
+        </button>
+        {error && (
           <>
-            <p>
-              {text}
-            </p>
-            <img src={image} className="App-logo" alt="logo" />
-            <input type="text" value={field} onChange={handleChange} />
-            <button onClick={handleSubmit}>
-              Valider
+            Perdu la bonne réponse était: <code>{questions?.[index]?.answer}</code>
+            <button onClick={handleNext}>
+              Suivant
             </button>
           </>
-        ))}
+        )}
       </header>
     </div>
   );

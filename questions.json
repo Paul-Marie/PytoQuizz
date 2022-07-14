@@ -1,16 +1,16 @@
 [
   {
     "text": "Qui est le plus beau ?",
-    "image": "./images/lethargi.png",
+    "image": "images/lethargi.png",
     "answer": "Lethargi",
     "theme": "test"
   }, {
     "text": "Quel est la capital de la France ?",
-    "image": "./images/paris.jpg",
+    "image": "images/paris.jpg",
     "answer": "Paris"
   }, {
     "text": "C'est quoi ca ? un ... ?",
-    "image": "./images/boat.jpg",
+    "image": "images/boat.jpg",
     "answer": "bateau"
   }
 ]
