@@ -5,7 +5,6 @@ import './style.css';
 function App() {
   const [themesList, setThemesList] = useState();
   const [theme,      setTheme     ] = useState();
-  const [score,      setScore     ] = useState(0);
 
   useEffect(() => {
     (async () => {
